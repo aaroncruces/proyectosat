@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="O_PcMDCQ5OYAy6XgtvLH" name="Page-1">
-        <mxGraphModel dx="1036" dy="356" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="843" dy="356" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -927,7 +927,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="337" value="Clasificacion contable" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
-                    <mxGeometry x="90" y="1340" width="160" height="116" as="geometry"/>
+                    <mxGeometry x="90" y="1380" width="160" height="116" as="geometry"/>
                 </mxCell>
                 <mxCell id="338" value="Retiro SAT" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="337">
                     <mxGeometry y="26" width="160" height="30" as="geometry"/>
@@ -982,6 +982,12 @@
                 </mxCell>
                 <mxCell id="369" value="1" style="resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="368">
                     <mxGeometry x="1" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="377" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="337" target="354">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="400" y="1400" as="sourcePoint"/>
+                        <mxPoint x="560" y="1400" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
