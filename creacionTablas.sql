@@ -1,4 +1,4 @@
-CREATE TABLE `satdatabase`.`persona` (
+CREATE TABLE `satdatabase`.`personas` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `rut` INT NULL COMMENT 'toda parsona deberia tenerlo.',
     `nombre` VARCHAR(255) NULL,
@@ -15,4 +15,14 @@ CREATE TABLE `satdatabase`.`tiposcontacto` (
     PRIMARY KEY (`id`),
     UNIQUE (`id`, `tipo`)
 ) ENGINE = InnoDB COMMENT = 'lista de tipos de contactos, como <<telefono>> o <<email>>';
+
+CREATE TABLE `satdatabase`.`contactos` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `idtipo` INT NOT NULL,
+    `dato` VARCHAR(255) NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`idtipo` ) REFERENCES `satdatabase`.`tiposcontacto`(`id` ),
+    UNIQUE (`id`)
+
+) ENGINE = InnoDB COMMENT = 'un contacto especifico como <<aaron@cruces.cac>>';
 
