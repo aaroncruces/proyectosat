@@ -89,10 +89,15 @@ CREATE  TABLE IF NOT EXISTS `satdatabase`.`contrato` (
 
 CREATE  TABLE IF NOT EXISTS `satdatabase`.`empresa` (
     `id` INT NOT NULL,
-    `nombre` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE (`id`)
 ) ENGINE = InnoDB COMMENT = 'una empresa es una persona';
+
+CREATE  TABLE IF NOT EXISTS `satdatabase`.`cliente` (
+    `id` INT NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE (`id`)
+) ENGINE = InnoDB COMMENT = 'un cliente es una persona';
 
 CREATE  TABLE IF NOT EXISTS `satdatabase`.`ubicacion` (
     `id` INT NOT NULL AUTO_INCREMENT,

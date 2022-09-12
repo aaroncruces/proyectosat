@@ -67,3 +67,21 @@ DROP TABLE IF EXISTS `satdatabase`.`ubicacionfisica`;
 DROP TABLE IF EXISTS `satdatabase`.`movimientodinero`;
 
 DROP TABLE IF EXISTS `satdatabase`.`despacho`;
+
+-- tablas union
+
+DROP TABLE IF EXISTS `satdatabase`.`personacontacto`;
+
+DROP TABLE IF EXISTS `satdatabase`.`personadocumento`;
+
+DROP TABLE IF EXISTS `satdatabase`.`personadepartamento`;
+
+DROP TABLE IF EXISTS `satdatabase`.`precioespecialcompraventapersona`;
+
+DROP TABLE IF EXISTS `satdatabase`.`extraccionmanterialextractor`;
+
+DROP TABLE IF EXISTS `satdatabase`.`documentodespacho`;
+
+DROP TABLE IF EXISTS `satdatabase`.`documentomovimientodinero`;
+
+DROP TABLE IF EXISTS `satdatabase`.`documentocompraventa`;
