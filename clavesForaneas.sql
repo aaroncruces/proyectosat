@@ -44,13 +44,13 @@ CREATE TABLE IF NOT EXISTS `satdatabase`.`personadepartamento` (
         ON DELETE CASCADE
 ) ENGINE = InnoDB COMMENT = '';
 
-ALTER TABLE`satdatabase`.`empresa`
+ALTER TABLE `satdatabase`.`empresa`
     ADD CONSTRAINT `empresa_es_persona`
         FOREIGN KEY (`id`)
         REFERENCES  `satdatabase`.`persona` (`id`)
         ON DELETE CASCADE;
 
-ALTER TABLE`satdatabase`.`empleado`
+ALTER TABLE `satdatabase`.`empleado`
     ADD CONSTRAINT `empleado_es_persona`
         FOREIGN KEY (`id`)
         REFERENCES  `satdatabase`.`persona` (`id`)
@@ -112,7 +112,7 @@ ALTER TABLE `satdatabase`.`compraventa`
         REFERENCES  `satdatabase`.`persona` (`id`)
         ON DELETE CASCADE;
 
-ALTER TABLE`satdatabase`.`cliente`
+ALTER TABLE `satdatabase`.`cliente`
     ADD CONSTRAINT `cliente_es_persona`
         FOREIGN KEY (`id`)
         REFERENCES  `satdatabase`.`persona` (`id`)
@@ -157,7 +157,7 @@ ALTER TABLE `satdatabase`.`documento`
         REFERENCES  `satdatabase`.`tipodocumento` (`id`)
         ON DELETE CASCADE;
 
-ALTER TABLE`satdatabase`.`contrato`
+ALTER TABLE `satdatabase`.`contrato`
     ADD CONSTRAINT `contrato_es_documento`
         FOREIGN KEY (`id`)
         REFERENCES  `satdatabase`.`documento` (`id`)
@@ -244,3 +244,53 @@ CREATE TABLE IF NOT EXISTS `satdatabase`.`ubicacionmaterial` (
         REFERENCES  `satdatabase`.`material` (`id`)
         ON DELETE CASCADE
 ) ENGINE = InnoDB COMMENT = '';
+
+ALTER TABLE `satdatabase`.`sucursal`
+    ADD idubicacion INT,
+    ADD CONSTRAINT `sucursal_tiene_ubicacion`
+        FOREIGN KEY (`idubicacion`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`extraccionmaterial`
+    ADD idubicacion INT,
+    ADD CONSTRAINT `extraccionmaterial_tiene_ubicacion`
+        FOREIGN KEY (`idubicacion`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`ubicaciondigital`
+    ADD CONSTRAINT `ubicaciondigital_es_ubicacion`
+        FOREIGN KEY (`id`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`ubicacionfisica`
+    ADD CONSTRAINT `ubicacionfisica_es_ubicacion`
+        FOREIGN KEY (`id`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`compraventa`
+    ADD idorigen INT,
+    ADD iddestino INT,
+    ADD CONSTRAINT `compraventa_tiene_origen`
+        FOREIGN KEY (`idorigen`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE,
+    ADD CONSTRAINT `compraventa_tiene_destino`
+        FOREIGN KEY (`iddestino`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`despacho`
+    ADD idorigen INT,
+    ADD iddestino INT,
+    ADD CONSTRAINT `despacho_tiene_origen`
+        FOREIGN KEY (`idorigen`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE,
+    ADD CONSTRAINT `despacho_tiene_destino`
+        FOREIGN KEY (`iddestino`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE;
