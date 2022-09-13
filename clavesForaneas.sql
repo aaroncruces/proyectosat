@@ -220,9 +220,9 @@ CREATE TABLE IF NOT EXISTS `satdatabase`.`documentocompraventa` (
 ) ENGINE = InnoDB COMMENT = '';
 
 
------------------
+---------------
 -- ubicacion --
------------------
+---------------
 ALTER TABLE `satdatabase`.`despacho`
     ADD idubicacion INT,
     ADD CONSTRAINT `despacho_tiene_ubicacion`
@@ -293,4 +293,57 @@ ALTER TABLE `satdatabase`.`despacho`
     ADD CONSTRAINT `despacho_tiene_destino`
         FOREIGN KEY (`iddestino`)
         REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE;
+
+---------------------
+-- movimentodinero --
+---------------------
+
+CREATE TABLE IF NOT EXISTS `satdatabase`.`despachogasto` (
+    `iddespacho` INT NOT NULL,
+    `idgasto` INT NOT NULL,
+    PRIMARY KEY (`iddespacho`,`idgasto`),
+    CONSTRAINT `despacho_tiene_gasto`
+        FOREIGN KEY (`idgasto`)
+        REFERENCES  `satdatabase`.`movimientodinero` (`id`)
+        ON DELETE CASCADE,
+    CONSTRAINT `gasto_es_de_despacho`
+        FOREIGN KEY (`iddespacho`)
+        REFERENCES  `satdatabase`.`despacho` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB COMMENT = '';
+
+ALTER TABLE `satdatabase`.`despacho`
+    ADD idmonto INT,
+    ADD CONSTRAINT `despacho_tiene_monto`
+        FOREIGN KEY (`idmonto`)
+        REFERENCES  `satdatabase`.`movimientodinero` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`movimientodinero`
+    ADD idmotivo INT,
+    ADD CONSTRAINT `movimientodinero_tiene_motivo`
+        FOREIGN KEY (`idmotivo`)
+        REFERENCES  `satdatabase`.`motivo` (`id`)
+        ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `satdatabase`.`movimientodinerocompraventa` (
+    `idmovimientodinero` INT NOT NULL,
+    `idcompraventa` INT NOT NULL,
+    PRIMARY KEY (`idmovimientodinero`,`idcompraventa`),
+    CONSTRAINT `compraventa_tiene_movimientodinero`
+        FOREIGN KEY (`idmovimientodinero`)
+        REFERENCES  `satdatabase`.`movimientodinero` (`id`)
+        ON DELETE CASCADE,
+    CONSTRAINT `movimientodinero_es_de_compraventa`
+        FOREIGN KEY (`idcompraventa`)
+        REFERENCES  `satdatabase`.`compraventa` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB COMMENT = 'un movimiento de dinero no siemptre es de una compraventa';
+
+ALTER TABLE `satdatabase`.`movimientodinero`
+    ADD idformapago INT,
+    ADD CONSTRAINT `movimientodinero_tiene_formapago`
+        FOREIGN KEY (`idmotivo`)
+        REFERENCES  `satdatabase`.`motivo` (`id`)
         ON DELETE CASCADE;

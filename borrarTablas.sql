@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0; -- to disable them
+
 DROP TABLE IF EXISTS `satdatabase`.`persona`;
 
 DROP TABLE IF EXISTS `satdatabase`.`empleado`;
@@ -54,7 +56,7 @@ DROP TABLE IF EXISTS `satdatabase`.`banco`;
 
 DROP TABLE IF EXISTS `satdatabase`.`entradasalida`;
 
-DROP TABLE IF EXISTS `satdatabase`.`formaspago`;
+DROP TABLE IF EXISTS `satdatabase`.`formapago`;
 
 DROP TABLE IF EXISTS `satdatabase`.`vehiculo`;
 
@@ -67,6 +69,8 @@ DROP TABLE IF EXISTS `satdatabase`.`ubicacionfisica`;
 DROP TABLE IF EXISTS `satdatabase`.`movimientodinero`;
 
 DROP TABLE IF EXISTS `satdatabase`.`despacho`;
+
+DROP TABLE IF EXISTS `satdatabase`.`cliente`;
 
 -- tablas union
 
@@ -87,3 +91,9 @@ DROP TABLE IF EXISTS `satdatabase`.`documentomovimientodinero`;
 DROP TABLE IF EXISTS `satdatabase`.`documentocompraventa`;
 
 DROP TABLE IF EXISTS `satdatabase`.`ubicacionmaterial`;
+
+DROP TABLE IF EXISTS `satdatabase`.`despachogasto`;
+
+DROP TABLE IF EXISTS `satdatabase`.`movimientodinerocompraventa`;
+
+SET FOREIGN_KEY_CHECKS=1; -- to re-enable them

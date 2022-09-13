@@ -219,7 +219,7 @@ CREATE  TABLE IF NOT EXISTS `satdatabase`.`entradasalida` (
     UNIQUE (`id`, `estado`)
 ) ENGINE = InnoDB COMMENT = 'un movimento de dinero, debe ser diferenciado';
 
-CREATE  TABLE IF NOT EXISTS `satdatabase`.`formaspago` (
+CREATE  TABLE IF NOT EXISTS `satdatabase`.`formapago` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nombre` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
