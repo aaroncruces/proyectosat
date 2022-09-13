@@ -225,7 +225,22 @@ CREATE TABLE IF NOT EXISTS `satdatabase`.`documentocompraventa` (
 -----------------
 ALTER TABLE `satdatabase`.`despacho`
     ADD idubicacion INT,
-    ADD CONSTRAINT `materoia_tiene_ubicacion`
+    ADD CONSTRAINT `despacho_tiene_ubicacion`
         FOREIGN KEY (`idubicacion`)
         REFERENCES  `satdatabase`.`ubicacion` (`id`)
         ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `satdatabase`.`ubicacionmaterial` (
+    `idubicacion` INT NOT NULL,
+    `idmaterial` INT NOT NULL,
+    `cantidad` INT,
+    PRIMARY KEY (`idubicacion`,`idmaterial`),
+    CONSTRAINT `material_tiene_ubicacion`
+        FOREIGN KEY (`idubicacion`)
+        REFERENCES  `satdatabase`.`ubicacion` (`id`)
+        ON DELETE CASCADE,
+    CONSTRAINT `ubicacion_puede_ser_de_material`
+        FOREIGN KEY (`idmaterial`)
+        REFERENCES  `satdatabase`.`material` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB COMMENT = '';

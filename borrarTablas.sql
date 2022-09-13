@@ -85,3 +85,5 @@ DROP TABLE IF EXISTS `satdatabase`.`documentodespacho`;
 DROP TABLE IF EXISTS `satdatabase`.`documentomovimientodinero`;
 
 DROP TABLE IF EXISTS `satdatabase`.`documentocompraventa`;
+
+DROP TABLE IF EXISTS `satdatabase`.`ubicacionmaterial`;
