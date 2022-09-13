@@ -240,13 +240,6 @@ CREATE  TABLE IF NOT EXISTS `satdatabase`.`extraccionmaterial` (
     UNIQUE (`id`)
 ) ENGINE = InnoDB COMMENT = '';
 
-CREATE  TABLE IF NOT EXISTS `satdatabase`.`extraccionmaterial` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `detalles` VARCHAR(255) NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE (`id`)
-) ENGINE = InnoDB COMMENT = '';
-
 CREATE  TABLE IF NOT EXISTS `satdatabase`.`ubicacionfisica` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `ciudad` VARCHAR(255) NULL,

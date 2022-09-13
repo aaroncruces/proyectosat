@@ -1,7 +1,6 @@
-
------------------
+--------------
 -- personas --
------------------
+--------------
 CREATE TABLE IF NOT EXISTS `satdatabase`.`personacontacto` (
     `idpersona` INT NOT NULL,
     `idcontacto` INT NOT NULL,
@@ -184,12 +183,6 @@ CREATE TABLE IF NOT EXISTS `satdatabase`.`documentodespacho` (
         ON DELETE CASCADE
 ) ENGINE = InnoDB COMMENT = 'para que documento no tenga registro despacho en tabla';
 
-ALTER TABLE `satdatabase`.`despacho`
-    ADD idubicacion INT,
-    ADD CONSTRAINT `documento_tiene_ubicacion`
-        FOREIGN KEY (`idubicacion`)
-        REFERENCES  `satdatabase`.`ubicacion` (`id`)
-        ON DELETE CASCADE;
 
 CREATE TABLE IF NOT EXISTS `satdatabase`.`documentomovimientodinero` (
     `iddocumento` INT NOT NULL,
@@ -298,7 +291,6 @@ ALTER TABLE `satdatabase`.`despacho`
 ---------------------
 -- movimentodinero --
 ---------------------
-
 CREATE TABLE IF NOT EXISTS `satdatabase`.`despachogasto` (
     `iddespacho` INT NOT NULL,
     `idgasto` INT NOT NULL,
@@ -346,4 +338,42 @@ ALTER TABLE `satdatabase`.`movimientodinero`
     ADD CONSTRAINT `movimientodinero_tiene_formapago`
         FOREIGN KEY (`idmotivo`)
         REFERENCES  `satdatabase`.`motivo` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`movimientodinero`
+    ADD idcuentabancaria INT NULL,
+    ADD CONSTRAINT `movimientodinero_puede_tener_cuentabancaria`
+        FOREIGN KEY (`idcuentabancaria`)
+        REFERENCES  `satdatabase`.`cuentabancaria` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`movimientodinero`
+    ADD identradasalida INT,
+    ADD CONSTRAINT `movimientodinero_puede_ser_entrada_o_salida`
+        FOREIGN KEY (`identradasalida`)
+        REFERENCES  `satdatabase`.`entradasalida` (`id`)
+        ON DELETE CASCADE;
+
+--------------
+-- sucursal --
+--------------
+ALTER TABLE `satdatabase`.`caja`
+    ADD idsucursal INT,
+    ADD CONSTRAINT `caja_tiene_sucursal`
+        FOREIGN KEY (`idsucursal`)
+        REFERENCES  `satdatabase`.`sucursal` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`asistencia`
+    ADD idsucursal INT,
+    ADD CONSTRAINT `asistencia_es_en_sucursal`
+        FOREIGN KEY (`idsucursal`)
+        REFERENCES  `satdatabase`.`sucursal` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`sucursal`
+    ADD idempresa INT,
+    ADD CONSTRAINT `asistencia_es_en_sucursal`
+        FOREIGN KEY (`idsucursal`)
+        REFERENCES  `satdatabase`.`sucursal` (`id`)
         ON DELETE CASCADE;
