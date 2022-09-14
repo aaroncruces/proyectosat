@@ -178,7 +178,7 @@ CREATE  TABLE IF NOT EXISTS `satdatabase`.`estadomaterial` (
     UNIQUE (`id`,`estado`)
 ) ENGINE = InnoDB COMMENT = 'estado del material, si esta listo para la venta, para desarme, etc';
 
-CREATE  TABLE IF NOT EXISTS `satdatabase`.`unidadematerial` (
+CREATE  TABLE IF NOT EXISTS `satdatabase`.`unidadmaterial` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `unidad` VARCHAR(255) NOT NULL,
     `alias` VARCHAR(255) NULL,

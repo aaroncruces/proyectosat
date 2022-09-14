@@ -46,7 +46,7 @@ DROP TABLE IF EXISTS `satdatabase`.`material`;
 
 DROP TABLE IF EXISTS `satdatabase`.`estadomaterial`;
 
-DROP TABLE IF EXISTS `satdatabase`.`unidadematerial`;
+DROP TABLE IF EXISTS `satdatabase`.`unidadmaterial`;
 
 DROP TABLE IF EXISTS `satdatabase`.`cuentabancaria`;
 
@@ -78,6 +78,8 @@ DROP TABLE IF EXISTS `satdatabase`.`personacontacto`;
 
 DROP TABLE IF EXISTS `satdatabase`.`personadocumento`;
 
+DROP TABLE IF EXISTS `satdatabase`.`contactosucursal`;
+
 DROP TABLE IF EXISTS `satdatabase`.`personadepartamento`;
 
 DROP TABLE IF EXISTS `satdatabase`.`precioespecialcompraventapersona`;
@@ -95,5 +97,8 @@ DROP TABLE IF EXISTS `satdatabase`.`ubicacionmaterial`;
 DROP TABLE IF EXISTS `satdatabase`.`despachogasto`;
 
 DROP TABLE IF EXISTS `satdatabase`.`movimientodinerocompraventa`;
+
+DROP TABLE IF EXISTS `satdatabase`.`departamentosucursal`;
+
 
 SET FOREIGN_KEY_CHECKS=1; -- to re-enable them

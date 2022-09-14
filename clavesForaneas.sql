@@ -373,7 +373,52 @@ ALTER TABLE `satdatabase`.`asistencia`
 
 ALTER TABLE `satdatabase`.`sucursal`
     ADD idempresa INT,
-    ADD CONSTRAINT `asistencia_es_en_sucursal`
+    ADD CONSTRAINT `sucursal_es_de_empresa`
+        FOREIGN KEY (`idempresa`)
+        REFERENCES  `satdatabase`.`empresa` (`id`)
+        ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `satdatabase`.`contactosucursal` (
+    `idcontacto` INT NOT NULL,
+    `idsucursal` INT NOT NULL,
+    PRIMARY KEY (`idsucursal`,`idcontacto`),
+    CONSTRAINT `sucursal_tiene_contacto`
+        FOREIGN KEY (`idcontacto`)
+        REFERENCES  `satdatabase`.`contacto` (`id`)
+        ON DELETE CASCADE,
+    CONSTRAINT `contacto_es_de_sucursal`
         FOREIGN KEY (`idsucursal`)
         REFERENCES  `satdatabase`.`sucursal` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB COMMENT = 'una sucursal puede tener multiples contactos';
+
+CREATE TABLE IF NOT EXISTS `satdatabase`.`departamentosucursal` (
+    `iddepartamento` INT NOT NULL,
+    `idsucursal` INT NOT NULL,
+    PRIMARY KEY (`idsucursal`,`iddepartamento`),
+    CONSTRAINT `sucursal_tiene_departamento`
+        FOREIGN KEY (`iddepartamento`)
+        REFERENCES  `satdatabase`.`departamento` (`id`)
+        ON DELETE CASCADE,
+    CONSTRAINT `departamento_es_de_sucursal`
+        FOREIGN KEY (`idsucursal`)
+        REFERENCES  `satdatabase`.`sucursal` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB COMMENT = 'un depeartamento puede estar en multiples sucursalkes';
+
+--------------
+-- material --
+--------------
+ALTER TABLE `satdatabase`.`material`
+    ADD idestado INT,
+    ADD CONSTRAINT `material_tiene_estado`
+        FOREIGN KEY (`idestado`)
+        REFERENCES  `satdatabase`.`estadomaterial` (`id`)
+        ON DELETE CASCADE;
+
+ALTER TABLE `satdatabase`.`material`
+    ADD idunidad INT,
+    ADD CONSTRAINT `material_tiene_unidad`
+        FOREIGN KEY (`idunidad`)
+        REFERENCES  `satdatabase`.`unidadmaterial` (`id`)
         ON DELETE CASCADE;
