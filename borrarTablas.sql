@@ -100,5 +100,7 @@ DROP TABLE IF EXISTS `satdatabase`.`movimientodinerocompraventa`;
 
 DROP TABLE IF EXISTS `satdatabase`.`departamentosucursal`;
 
+DROP TABLE IF EXISTS `satdatabase`.`itemmercaderiamaterial`;
 
+DROP TABLE IF EXISTS `satdatabase`.`extraccionmaterialmaterial`;
 SET FOREIGN_KEY_CHECKS=1; -- to re-enable them

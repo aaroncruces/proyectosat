@@ -422,3 +422,33 @@ ALTER TABLE `satdatabase`.`material`
         FOREIGN KEY (`idunidad`)
         REFERENCES  `satdatabase`.`unidadmaterial` (`id`)
         ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `satdatabase`.`itemmercaderiamaterial` (
+    `iditemmercaderia` INT NOT NULL,
+    `idmaterial` INT NOT NULL,
+    PRIMARY KEY (`iditemmercaderia`,`idmaterial`),
+    CONSTRAINT `itemmercaderia_consiste_en_material`
+        FOREIGN KEY (`idmaterial`)
+        REFERENCES  `satdatabase`.`material` (`id`)
+        ON DELETE CASCADE,
+    CONSTRAINT `material_conforma_itemmercaderia`
+        FOREIGN KEY (`iditemmercaderia`)
+        REFERENCES  `satdatabase`.`itemmercaderia` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB COMMENT = '';
+
+CREATE TABLE IF NOT EXISTS `satdatabase`.`extraccionmaterialmaterial` (
+    `idextraccionmaterial` INT NOT NULL,
+    `idmaterial` INT NOT NULL,
+    PRIMARY KEY (`idextraccionmaterial`,`idmaterial`),
+    CONSTRAINT `extraccionmaterial_consiste_en_material`
+        FOREIGN KEY (`idmaterial`)
+        REFERENCES  `satdatabase`.`material` (`id`)
+        ON DELETE CASCADE,
+    CONSTRAINT `material_conforma_extraccionmaterial`
+        FOREIGN KEY (`idextraccionmaterial`)
+        REFERENCES  `satdatabase`.`extraccionmaterial` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB COMMENT = '';
+
+
