@@ -2,13 +2,14 @@
   "name": "proyectosat",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.ts",
   "_type": "module",
   "compilerOptions": {
     "esModuleInterop": true
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +21,9 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
+    "@types/morgan": "^1.9.3",
     "jest": "^29.1.2",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   }
 }
