@@ -10,17 +10,16 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 
-export const NuevoProducto = () => {
-  return (
-    <>
-      <Navbar currentPage={pageList.nuevoProducto} />
-      <Box sx={formBoxStyle}>
+export const EditarProducto = () => {
+  return (<>
+    <Navbar currentPage={pageList.editarProducto} />
+    <Box sx={formBoxStyle}>
       <Paper
         elevation={formPaperElevation}
         sx={formPaperSpacing}
       >
         <Typography variant="h4" gutterBottom textAlign='center'>
-          Nuevo Producto
+          Editar Producto
         </Typography>
         <Grid container>
           <Grid xs={12}>
@@ -113,6 +112,6 @@ export const NuevoProducto = () => {
         </Grid>
       </Paper>
     </Box>
-    </>
+  </>
   )
 }

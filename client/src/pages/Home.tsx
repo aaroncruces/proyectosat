@@ -1,5 +1,4 @@
 ////rafc
-
 import React from 'react'
 import { Navbar } from '../layouts/Navbar'
 import { PageItem, pageList } from './pageList'
@@ -8,31 +7,19 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
-
-/*
-
-import * as React from 'react';
-
-export default function MediaCard() {
-  return (
-   
-  );
-}
-
-
-*/
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   return (
     <>
-      <Navbar currentPage={pageList[0]} />
+      <Navbar currentPage={pageList.menuPrincipal} />
+
       <Box sx={{display:'flex', justifyContent:'center'}}  >  
       <Masonry columns={3} spacing={2}  sx={{ maxWidth: 700,  }}>
         {
-          pageList.slice(1).map((page: PageItem) => <>
+            Object.values(pageList).map((page: PageItem) => <>
             <Card sx={{ maxWidth: 200, margin: "30px" }}>
-            {/* https://stackoverflow.com/questions/49007357/how-to-make-the-whole-card-component-clickable-in-material-ui-using-react-js */}
-              <CardActionArea href={page.url}>
+              <CardActionArea component={Link} to={page.url} >
                 <Box sx={{ bgcolor: 'inherit', display: 'flex', alignItems: 'center', padding: "30px" }}>
                   {page.getIcon()}
                 </Box>

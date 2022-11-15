@@ -2,6 +2,7 @@ import React from 'react'
 import { AppBar, Box, Toolbar, Button, Typography } from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import { PageItem, pageList } from '../pages/pageList';
+import { Link } from 'react-router-dom';
 
 type NavbarProps={
   currentPage:PageItem
@@ -25,8 +26,8 @@ export const Navbar = ({currentPage}:NavbarProps) => {
               {currentPage.pageName}
             </Typography>
             {
-              pageList.map((page:PageItem)=>
-                 page===currentPage?<Button disabled color="inherit">{page.pageName}</Button>: <Button color="inherit">{page.pageName}</Button>
+              Object.values(pageList).map((page:PageItem)=>
+                 page===currentPage?<Button disabled color="inherit">{page.pageName}</Button>: <Button color="inherit" component={Link} to={page.url}>{page.pageName}</Button>
               )
             }
 

@@ -1,18 +1,35 @@
 import React from 'react'
-import { TextField, Autocomplete } from '@mui/material';
+import { TextField, Autocomplete, InputAdornment } from '@mui/material';
 import { textFieldStyle } from './textFieldStyle';
 import { clientes } from './../model/mocks/clientes'
 import { Cliente } from '../model/types/Cliente';
+import { AutocompleteProps } from './AutocompleteProps';
+import PersonIcon from '@mui/icons-material/Person';
 
-
-export const ClienteAutocomplete = () => {
+export const ClienteAutocomplete = ({optional}:AutocompleteProps) => {
   return (
     <>
       <Autocomplete id="ClienteAutocomplete"
         options={clientes}
         getOptionLabel={(cliente: Cliente) => cliente.nombre + " " + cliente.apellido +": "+cliente.rut.toString()}
         renderInput={(params) => (
-          <TextField {...params} label="Cliente (opcional)" variant="outlined" fullWidth sx={{ ...textFieldStyle }} />
+          <TextField {...params}
+          label={("Cliente") + (optional?" (opcional)":"")}
+          variant="outlined"
+          color={optional ? 'secondary' : "primary"}
+          sx={{ ...textFieldStyle }}
+          InputProps={{
+            ...params.InputProps,
+            startAdornment: (
+              <>
+                <InputAdornment position="end">
+                  <PersonIcon color={optional ? 'secondary' : "primary"} />
+                </InputAdornment>
+                {params.InputProps.startAdornment}
+              </>
+            )
+          }}
+          />
         )}
       />
     </>
