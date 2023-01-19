@@ -1,3 +1,25 @@
+import { PrismaClient } from "@prisma/client"
+const prisma = new PrismaClient();
+console.log("asdasd");
+
+
+async function dbrun() {
+    const personas = await prisma.persona.create({
+        data: {
+
+        }
+    })
+    console.log(personas);
+
+}
+dbrun()
+    .catch(e => {
+        console.error(e.message)
+    })
+    .finally(async () => {
+        await prisma.$disconnect
+    })
+/*
 import express from "express";
 import morgan from "morgan";
 import path from "path";
@@ -28,3 +50,4 @@ app.get('/',(req,res)=>{
 console.log(public_path);
 
 app.listen(5000,()=>console.log("serving on port 5000"))
+*/
