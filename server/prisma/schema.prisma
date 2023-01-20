@@ -11,5 +11,25 @@ datasource db {
 }
 
 model Persona {
-  id Int @id @default(autoincrement())
+  id             Int        @id @default(autoincrement())
+  rut            Int        @unique
+  nombre         String
+  otrosnombres   String?
+  apellido       String
+  otrosapellidos String?
+  contactos      Contacto[]
+}
+
+model Contacto {
+  id        Int            @id @default(autoincrement())
+  Persona   Persona        @relation(fields: [personaId], references: [id])
+  personaId Int
+  tipo      TiposContactos @default(CORREOELECTRONICO)
+  detalles  String
+}
+
+enum TiposContactos {
+  TELEFONOFIJO
+  TELEFONOMOVIL
+  CORREOELECTRONICO
 }
