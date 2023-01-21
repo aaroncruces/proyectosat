@@ -11,25 +11,36 @@ datasource db {
 }
 
 model Persona {
-  id             Int        @id @default(autoincrement())
-  rut            Int        @unique
-  nombre         String
-  otrosnombres   String?
-  apellido       String
-  otrosapellidos String?
-  contactos      Contacto[]
+  id                  Int                 @id @default(autoincrement())
+  rut                 Int                 @unique
+  nombre              String
+  otrosnombres        String?
+  apellido            String?
+  otrosapellidos      String?
+  numerostelefonicos  NumeroTelefonico[]
+  correoselectronicos CorreoElectronico[]
+  otroscontactos      Contacto[]
+}
+
+model NumeroTelefonico {
+  id        Int      @id @default(autoincrement())
+  //should i add areacode?
+  numero    Int
+  Persona   Persona? @relation(fields: [personaId], references: [id])
+  personaId Int?
+}
+
+model CorreoElectronico {
+  id        Int      @id @default(autoincrement())
+  //should i add areacode?
+  correo    String
+  Persona   Persona? @relation(fields: [personaId], references: [id])
+  personaId Int?
 }
 
 model Contacto {
-  id        Int            @id @default(autoincrement())
-  Persona   Persona        @relation(fields: [personaId], references: [id])
-  personaId Int
-  tipo      TiposContactos @default(CORREOELECTRONICO)
+  id        Int      @id @default(autoincrement())
   detalles  String
-}
-
-enum TiposContactos {
-  TELEFONOFIJO
-  TELEFONOMOVIL
-  CORREOELECTRONICO
+  Persona   Persona? @relation(fields: [personaId], references: [id])
+  personaId Int?
 }
