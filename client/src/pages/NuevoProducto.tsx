@@ -15,104 +15,104 @@ export const NuevoProducto = () => {
     <>
       <Navbar currentPage={pageList.nuevoProducto} />
       <Box sx={formBoxStyle}>
-      <Paper
-        elevation={formPaperElevation}
-        sx={formPaperSpacing}
-      >
-        <Typography variant="h4" gutterBottom textAlign='center'>
-          Nuevo Producto
-        </Typography>
-        <Grid container>
-          <Grid xs={12}>
-            <TextField
-              id="outlined-basic"
-              label="Nombre Producto"
-              variant="outlined"
-              sx={{ ...textFieldStyle }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <LayersIcon color="primary"/>
-                  </InputAdornment>
-                ),
-              }}
-            />
+        <Paper
+          elevation={formPaperElevation}
+          sx={formPaperSpacing}
+        >
+          <Typography variant="h4" gutterBottom textAlign='center'>
+            Nuevo Producto
+          </Typography>
+          <Grid container>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Nombre Producto"
+                variant="outlined"
+                sx={{ ...textFieldStyle }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LayersIcon color="primary" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Codigo Barras (opcional)"
+                color="secondary"
+                variant="outlined"
+                fullWidth sx={{ ...textFieldStyle }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <HorizontalSplitIcon color="secondary" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Precio"
+                variant="outlined"
+                fullWidth sx={{ ...textFieldStyle }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <MonetizationOnIcon color="primary" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Cantidad Stock"
+                color="primary"
+                variant="outlined"
+                sx={{ ...textFieldStyle }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AddToPhotosIcon color="primary" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <UnidadAutocomplete optional={true} />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Observaciones (opcional)"
+                color="secondary"
+                variant="outlined"
+                fullWidth sx={{ ...textFieldStyle }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AddCommentIcon color="secondary" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={2} >
+              <Button>Atras</Button>
+            </Grid>
+            <Grid item xs={2}>
+              <Button variant="contained"> Continuar</Button>
+            </Grid>
           </Grid>
-          <Grid xs={12}>
-            <TextField
-              id="outlined-basic"
-              label="Codigo Barras (opcional)"
-              color="secondary"
-              variant="outlined"
-              fullWidth sx={{ ...textFieldStyle }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <HorizontalSplitIcon color="secondary" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid xs={12}>
-            <TextField
-              id="outlined-basic"
-              label="Precio"
-              variant="outlined"
-              fullWidth sx={{ ...textFieldStyle }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <MonetizationOnIcon color="primary"/>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid xs={12}>
-            <TextField
-            id="outlined-basic"
-            label="Cantidad Stock"
-            color="primary"
-            variant="outlined"
-            sx={{ ...textFieldStyle }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AddToPhotosIcon color="primary"/>
-                </InputAdornment>
-              ),
-            }}
-            />
-          </Grid>
-          <Grid xs={12}>
-            <UnidadAutocomplete optional={true} />
-          </Grid>
-          <Grid xs={12}>
-            <TextField
-            id="outlined-basic"
-            label="Observaciones (opcional)"
-            color="secondary"
-            variant="outlined"
-            fullWidth sx={{ ...textFieldStyle }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AddCommentIcon color="secondary"/>
-                </InputAdornment>
-              ),
-            }}
-            />
-          </Grid>
-          <Grid xs={2} >
-            <Button>Atras</Button>
-          </Grid>
-          <Grid xs={2}>
-            <Button variant="contained"> Continuar</Button>
-          </Grid>
-        </Grid>
-      </Paper>
-    </Box>
+        </Paper>
+      </Box>
     </>
   )
 }

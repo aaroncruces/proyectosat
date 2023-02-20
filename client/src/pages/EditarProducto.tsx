@@ -22,7 +22,7 @@ export const EditarProducto = () => {
           Editar Producto
         </Typography>
         <Grid container>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <TextField
               id="outlined-basic"
               label="Nombre Producto"
@@ -31,13 +31,13 @@ export const EditarProducto = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LayersIcon color="primary"/>
+                    <LayersIcon color="primary" />
                   </InputAdornment>
                 ),
               }}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <TextField
               id="outlined-basic"
               label="Codigo Barras (opcional)"
@@ -53,7 +53,7 @@ export const EditarProducto = () => {
               }}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <TextField
               id="outlined-basic"
               label="Precio"
@@ -62,51 +62,51 @@ export const EditarProducto = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <MonetizationOnIcon color="primary"/>
+                    <MonetizationOnIcon color="primary" />
                   </InputAdornment>
                 ),
               }}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <TextField
-            id="outlined-basic"
-            label="Cantidad Stock"
-            color="primary"
-            variant="outlined"
-            sx={{ ...textFieldStyle }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AddToPhotosIcon color="primary"/>
-                </InputAdornment>
-              ),
-            }}
+              id="outlined-basic"
+              label="Cantidad Stock"
+              color="primary"
+              variant="outlined"
+              sx={{ ...textFieldStyle }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AddToPhotosIcon color="primary" />
+                  </InputAdornment>
+                ),
+              }}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <UnidadAutocomplete optional={true} />
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <TextField
-            id="outlined-basic"
-            label="Observaciones (opcional)"
-            color="secondary"
-            variant="outlined"
-            fullWidth sx={{ ...textFieldStyle }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AddCommentIcon color="secondary"/>
-                </InputAdornment>
-              ),
-            }}
+              id="outlined-basic"
+              label="Observaciones (opcional)"
+              color="secondary"
+              variant="outlined"
+              fullWidth sx={{ ...textFieldStyle }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AddCommentIcon color="secondary" />
+                  </InputAdornment>
+                ),
+              }}
             />
           </Grid>
-          <Grid xs={2} >
+          <Grid item xs={2} >
             <Button>Atras</Button>
           </Grid>
-          <Grid xs={2}>
+          <Grid item xs={2}>
             <Button variant="contained"> Continuar</Button>
           </Grid>
         </Grid>

@@ -24,7 +24,7 @@ export const Venta = () => {
             Venta Producto
           </Typography>
           <Grid container>
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <TextField
                 id="outlined-basic"
                 label="Producto"
@@ -39,10 +39,10 @@ export const Venta = () => {
                 }}
               />
             </Grid>
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <ClienteAutocomplete optional={true} />
             </Grid>
-            <Grid xs={6}>
+            <Grid item xs={6}>
               <Box sx={{ pr: 1 }}>
                 <TextField
                   id="outlined-basic"
@@ -59,7 +59,7 @@ export const Venta = () => {
                 />
               </Box>
             </Grid>
-            <Grid xs={6}>
+            <Grid item xs={6}>
               <Box sx={{ pl: 1 }}>
                 <TextField
                   id="outlined-basic"
@@ -81,7 +81,7 @@ export const Venta = () => {
                 />
               </Box>
             </Grid>
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <TextField
                 id="outlined-basic"
                 label="Precio neto (total)"
@@ -96,7 +96,7 @@ export const Venta = () => {
                 }}
               />
             </Grid>
-            <Grid xs={6}>
+            <Grid item xs={6}>
               <Box sx={{ pr: 1 }}>
                 <TextField
                   id="outlined-basic"
@@ -113,7 +113,7 @@ export const Venta = () => {
                 />
               </Box>
             </Grid>
-            <Grid xs={6}>
+            <Grid item xs={6}>
               <Box sx={{ pl: 1 }}>
                 <TextField
                   id="outlined-basic"
@@ -132,13 +132,13 @@ export const Venta = () => {
                 />
               </Box>
             </Grid>
-            <Grid xs={2} >
+            <Grid item xs={2} >
               <Button>Atras</Button>
             </Grid>
-            <Grid xs={5}>
+            <Grid item xs={5}>
               <Button variant="contained"> Agregar otro</Button>
             </Grid>
-            <Grid xs={2}>
+            <Grid item xs={2}>
               <Button variant="contained"> Pagar</Button>
             </Grid>
           </Grid>

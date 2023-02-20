@@ -9,12 +9,12 @@ import { PageItem, pageList } from './pages/pageList';
 
 
 function App() {
-  
+
   return (
     <>
       <Routes>
         {
-         Object.values(pageList).map((page:PageItem)=><Route path={page.url} element={page.getPageComponent()}/>)
+          Object.values(pageList).map((page: PageItem, index: number) => <Route path={page.url} key={index} element={page.getPageComponent()} />)
         }
       </Routes>
     </>

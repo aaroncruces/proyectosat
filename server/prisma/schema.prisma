@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
@@ -16,7 +17,7 @@ model Persona {
   nombre              String
   otrosnombres        String?
   apellido            String?
-  otrosapellidos      String?
+  segundoapellido     String?
   numerostelefonicos  NumeroTelefonico[]
   correoselectronicos CorreoElectronico[]
   otroscontactos      Contacto[]
@@ -26,7 +27,7 @@ model NumeroTelefonico {
   id        Int      @id @default(autoincrement())
   //should i add areacode?
   numero    Int
-  Persona   Persona? @relation(fields: [personaId], references: [id])
+  Persona   Persona? @relation(fields: [personaId], references: [id], onDelete: Cascade)
   personaId Int?
 }
 
@@ -34,13 +35,13 @@ model CorreoElectronico {
   id        Int      @id @default(autoincrement())
   //should i add areacode?
   correo    String
-  Persona   Persona? @relation(fields: [personaId], references: [id])
+  Persona   Persona? @relation(fields: [personaId], references: [id], onDelete: Cascade)
   personaId Int?
 }
 
 model Contacto {
   id        Int      @id @default(autoincrement())
   detalles  String
-  Persona   Persona? @relation(fields: [personaId], references: [id])
+  Persona   Persona? @relation(fields: [personaId], references: [id], onDelete: Cascade)
   personaId Int?
 }

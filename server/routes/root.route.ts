@@ -1,7 +1,6 @@
-import express from "express";
-export const root_route=express.Router();
+import { Router } from "express";
+export const root_route = Router();
 
-root_route.get('/',(req,res)=>{
+root_route.get('/', (req, res) => {
     res.json('index')
 })
- 
