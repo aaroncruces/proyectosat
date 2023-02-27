@@ -4,8 +4,14 @@ export const formatName: (name: string) => string = (name: string) => {
     let formattedName = name.toLowerCase()
     formattedName = formattedName.replace(/à/g, "á").replace(/è/g, "é").replace(/ì/g, "í").replace(/ò/g, "ó").replace(/ù/g, "ú")
     formattedName = formattedName.replace(/[^a-zñáéíóúü´`¨\- ]/g, "")
-    const separateWords = formattedName.replace(/\s+/g, ' ').trimStart().toLowerCase().split(" ")
-    formattedName = separateWords.reduce((
+    formattedName = formattedName.replace(/\s+/g, ' ').trimStart().toLowerCase()
+
+    return formattedName
+}
+
+export const decorateName: (name: string) => string = (name: string) => {
+    const separateWords = name.split(" ")
+    const decoratedName = separateWords.reduce((
         (accumulated: string, currentWord: string, index: number) => {
             let separator = " "
             if (index === (separateWords.length - 1)) {
@@ -13,8 +19,7 @@ export const formatName: (name: string) => string = (name: string) => {
             }
             return accumulated + capitalizeWord(currentWord) + separator
         }), "")
-
-    return formattedName
+    return decoratedName
 }
 
 export const formatAlphanumeric: (name: string) => string = (name: string) => {
@@ -49,7 +54,6 @@ export const formatEmail: (email: string) => string = (email: string) => {
     //localPart = localPart.replace(/[^a-z0-9!#$%&'*+-/=?^_`{|}~]/g, "")
     // assuming hotmail-gmail like email:
     localPart = localPart.replace(/[^a-z0-9-_.]/g, "")
-    console.log(localPart);
 
     //only localpart
     if (splitEmail.length <= 1) return localPart;
@@ -57,7 +61,7 @@ export const formatEmail: (email: string) => string = (email: string) => {
     splitEmail.shift()
     //domainpart only has a single "@"
     let domainPart = splitEmail.join("")
-    domainPart = domainPart.replace(/[^a-z0-9.-]/g, "")
+    domainPart = domainPart.replace(/[^a-z0-9.]/g, "")
     //domainpart cannot start with "-"
     if (domainPart[0] === "-") {
         if (domainPart.length === 1) domainPart = ""
@@ -67,28 +71,31 @@ export const formatEmail: (email: string) => string = (email: string) => {
     return localPart + "@" + domainPart
 }
 
-export const checkEmail: (email: string) => boolean = (email: string) => {
-    if (!email) return false
-    if (email.length < 1) return false
+export const checkEmail: (email: string) => string = (email: string) => {
+    if (!email) return ""
+    if (email.length < 1) return ""
 
-    // format a@b
     const splitAT = email.split("@")
-    if (splitAT.length !== 2) return false
+    if (splitAT.length !== 2) return "Email debe tener arroba '@'"
 
-    //format a@b.c
+    if (splitAT[0] === "") return "Email debe tener nombre de usuario 'usuario@'"
+
+    if (splitAT[0][0] === ".") return "Email no puede empezar con punto '.'"
+    if (splitAT[0][0] === "-") return "Email no puede empezar con guion '-'"
+    if (splitAT[0][0] === "_") return "Email no puede empezar con guion bajo '_'"
+
     const domainSplitDOT = splitAT[1].split(".")
-    if (domainSplitDOT.length <= 2) return false
+    if (domainSplitDOT.length <= 1) return "Email debe tener dominio de la forma '@sitio.dom'"
 
-    //cannot end with "."
+    if (domainSplitDOT[0] === "") return "Email debe tener dominio de la forma '@sitio.dom'"
+
     const lastWord = domainSplitDOT[domainSplitDOT.length - 1]
-    if (lastWord.length < 1) return false
+    if (lastWord.length < 1) return "Email no puede terminar con punto '.'"
 
-    //cannot end in "-"
-    const lastLetter = lastWord[lastWord.length - 1]
-    if (lastLetter === "-") return false
+    if (email.toLowerCase().trim() !== formatEmail(email).toLowerCase().trim())
+        return "Email contiene caracteres invalidos"
 
-    //email have to have a valid character set
-    return email.toLowerCase().trim() === formatEmail(email).toLowerCase().trim()
+    return ""
 }
 
 export const stripIntegerStringSpecialCharacters: (numericString: string) => string =

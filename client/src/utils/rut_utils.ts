@@ -38,7 +38,7 @@ const separateNumberStringWithDots: (digits: string) => string =
  * @param rutWithDV 
  * @returns errorMessage
  */
-export const check_rutWithDv: (rutWithDv: string) => string =
+export const checkStructure_rutWithDv: (rutWithDv: string) => string =
     (rutWithDV: string) => {
 
         if (rutWithDV === undefined || rutWithDV === null)
@@ -53,22 +53,25 @@ export const check_rutWithDv: (rutWithDv: string) => string =
             return "Rut no puede ser de 1 solo digito"
         }
 
-        const numericPart = rutWithDV.slice(0, (rutWithDV.length - 1))
-        if (isNaN(Number(numericPart)))
-            return "El rut debe ser numerico";
-
-        const dvPart = rutWithDV[rutWithDV.length - 1]
-        const calculatedDV = calculate_dv(Number(numericPart))
-        console.log(dvPart + " " + calculatedDV);
-
-        if (dvPart !== calculatedDV)
-            return "Digito Verificador Incorrecto"
-
-        return "";
+        return ""
     }
 
+export const checkDV_rutWithDV: (rutWithDV: string) => string = (rutWithDV: string) => {
 
-export const calculate_dv = (rutWithoutDV: number) => {
+    const numericPart = rutWithDV.slice(0, (rutWithDV.length - 1))
+    if (isNaN(Number(numericPart)))
+        return "El rut debe ser numerico";
+
+    const dvPart = rutWithDV[rutWithDV.length - 1]
+    const calculatedDV = calculate_dv(Number(numericPart))
+
+    if (dvPart !== calculatedDV)
+        return "Digito Verificador Incorrecto"
+
+    return "";
+}
+
+export const calculate_dv: (rutWithDv: number) => string = (rutWithoutDV: number) => {
     var M = 0, S = 1;
     for (; rutWithoutDV; rutWithoutDV = Math.floor(rutWithoutDV / 10))
         S = (S + rutWithoutDV % 10 * (9 - M++ % 6)) % 11;

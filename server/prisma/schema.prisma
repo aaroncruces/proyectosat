@@ -21,6 +21,17 @@ model Persona {
   numerostelefonicos  NumeroTelefonico[]
   correoselectronicos CorreoElectronico[]
   otroscontactos      Contacto[]
+  direcciones         Direccion[]
+}
+
+model Direccion {
+  id           Int      @id @default(autoincrement())
+  calle        String
+  numero       Int
+  departamento Int
+  ciudad       String
+  Persona      Persona? @relation(fields: [personaId], references: [id])
+  personaId    Int?
 }
 
 model NumeroTelefonico {
