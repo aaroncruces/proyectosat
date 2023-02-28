@@ -11,48 +11,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Persona {
-  id                  Int                 @id @default(autoincrement())
-  rut                 Int                 @unique
-  nombre              String
-  otrosnombres        String?
-  apellido            String?
-  segundoapellido     String?
-  numerostelefonicos  NumeroTelefonico[]
-  correoselectronicos CorreoElectronico[]
-  otroscontactos      Contacto[]
-  direcciones         Direccion[]
+model Person {
+  id               Int           @id @default(autoincrement())
+  rut              Int           @unique
+  name             String
+  middleNames      String?
+  paternalLastName String?
+  maternalLastName String?
+  phoneNumbers     PhoneNumber[]
+  emails           Email[]
+  addresses        Address[]
 }
 
-model Direccion {
-  id           Int      @id @default(autoincrement())
-  calle        String
-  numero       Int
-  departamento Int
-  ciudad       String
-  Persona      Persona? @relation(fields: [personaId], references: [id])
-  personaId    Int?
+model Address {
+  id              Int     @id @default(autoincrement())
+  street          String
+  number          Int
+  apartmentNumber Int
+  city            String
+  Person          Person? @relation(fields: [personId], references: [id])
+  personId        Int?
 }
 
-model NumeroTelefonico {
-  id        Int      @id @default(autoincrement())
+model PhoneNumber {
+  id        Int       @id @default(autoincrement())
   //should i add areacode?
-  numero    Int
-  Persona   Persona? @relation(fields: [personaId], references: [id], onDelete: Cascade)
-  personaId Int?
+  number    Int
+  Person    Person?   @relation(fields: [personId], references: [id], onDelete: Cascade)
+  personId  Int?
+  phoneType PhoneType @default(MOBILE)
 }
 
-model CorreoElectronico {
-  id        Int      @id @default(autoincrement())
+enum PhoneType {
+  MOBILE
+  LANDLINE
+}
+
+model Email {
+  id       Int     @id @default(autoincrement())
   //should i add areacode?
-  correo    String
-  Persona   Persona? @relation(fields: [personaId], references: [id], onDelete: Cascade)
-  personaId Int?
-}
-
-model Contacto {
-  id        Int      @id @default(autoincrement())
-  detalles  String
-  Persona   Persona? @relation(fields: [personaId], references: [id], onDelete: Cascade)
-  personaId Int?
+  email    String
+  Person   Person? @relation(fields: [personId], references: [id], onDelete: Cascade)
+  personId Int?
 }

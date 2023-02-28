@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 
 //create
 persona_route.post("/persona", async (req, res) => {
-    console.log(JSON.stringify(req.body));
+    console.log(JSON.stringify(req.body, null, 2));
 
     return
     let missingFields: string[] = []

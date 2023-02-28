@@ -32,43 +32,43 @@ export const NuevoCliente = () => {
     return decorateRut(rut)
   }
 
-  const [nombre, setNombre] = useState("")
-  const [nombreErrorMessage, setNombreErrorMessage] = useState("")
-  const writingNombre = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    const newNombre = formatName(ev.target.value)
-    setNombre(newNombre);
-    if (!newNombre || newNombre === "") {
-      setNombreErrorMessage("Nombre es obligatorio")
+  const [name, setName] = useState("")
+  const [nameErrorMessage, setNameErrorMessage] = useState("")
+  const writingName = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = formatName(ev.target.value)
+    setName(newName);
+    if (!newName || newName === "") {
+      setNameErrorMessage("Nombre es obligatorio")
     } else {
-      setNombreErrorMessage("")
+      setNameErrorMessage("")
     }
   }
-  const displayNombre: () => string = () => decorateName(nombre);
+  const displayName: () => string = () => decorateName(name);
 
-  const [otrosNombres, setOtrosNombres] = useState("")
-  const writingOtrosNombres = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setOtrosNombres(formatName(ev.target.value));
-  const displayOtrosNombres: () => string = () => decorateName(otrosNombres);
+  const [middleNames, setMiddleNames] = useState("")
+  const writingMiddleNames = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setMiddleNames(formatName(ev.target.value));
+  const displayMiddleNames: () => string = () => decorateName(middleNames);
 
-  const [apellido, setApellido] = useState("")
-  const writingApellido = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setApellido(formatName(ev.target.value));
-  const displayApellido: () => string = () => decorateName(apellido);
+  const [paternalLastName, setPaternalLastName] = useState("")
+  const writingPaternalLastName = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setPaternalLastName(formatName(ev.target.value));
+  const displayPaternalLastName: () => string = () => decorateName(paternalLastName);
 
-  const [segundoApellido, setSegundoApellido] = useState("")
-  const writingSegundoApellido = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setSegundoApellido(formatName(ev.target.value));
-  const displaySegundoApellido: () => string = () => decorateName(segundoApellido);
+  const [maternalLastName, setMaternalLastName] = useState("")
+  const writingMaternalLastName = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setMaternalLastName(formatName(ev.target.value));
+  const displayMaternalLastName: () => string = () => decorateName(maternalLastName);
 
-  const [telefonoMovil, setTelefonoMovil] = useState("")
-  const writingTelefonoMovil = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setTelefonoMovil(formatNumeric(ev.target.value));
-  const displayTelefonoMovil: () => string = () => telefonoMovil;
+  const [mobilePhone, setMobilePhone] = useState("")
+  const writingMobilePhone = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setMobilePhone(formatNumeric(ev.target.value));
+  const displayMobilePhone: () => string = () => mobilePhone;
 
-  const [telefonoFijo, setTelefonoFijo] = useState("")
-  const writingTelefonoFijo = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setTelefonoFijo(formatNumeric(ev.target.value));
-  const displayTelefonoFijo: () => string = () => telefonoFijo;
+  const [landlinePhone, setLandlinePhone] = useState("")
+  const writingLandlinePhone = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setLandlinePhone(formatNumeric(ev.target.value));
+  const displayLandlinePhone: () => string = () => landlinePhone;
 
   const [email, setEmail] = useState("")
   const [emailErrorMessage, setEmailErrorMessage] = useState("")
@@ -78,35 +78,35 @@ export const NuevoCliente = () => {
   }
   const displayEmail: () => string = () => email;
 
-  const [segundoEmail, setSegundoEmail] = useState("")
-  const [segundoEmailErrorMessage, setSegundoEmailErrorMessage] = useState("")
-  const writingSegundoEmail = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    setSegundoEmail(formatEmail(ev.target.value));
-    setSegundoEmailErrorMessage("")
+  const [secondEmail, setSecondEmail] = useState("")
+  const [secondEmailErrorMessage, setSecondEmailErrorMessage] = useState("")
+  const writingSecondEmail = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setSecondEmail(formatEmail(ev.target.value));
+    setSecondEmailErrorMessage("")
   }
-  const displaySegundoEmail: () => string = () => segundoEmail;
+  const displaySecondEmail: () => string = () => secondEmail;
 
-  const [calle, setCalle] = useState("")
-  const writingCalle = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setCalle(formatAlphanumeric(ev.target.value));
-  const displayCalle: () => string = () => decorateName(calle);
+  const [street, setStreet] = useState("")
+  const writingStreet = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setStreet(formatAlphanumeric(ev.target.value));
+  const displayStreet: () => string = () => decorateName(street);
 
-  const [numeroDireccion, setNumeroDireccion] = useState("")
-  const writingNumeroDireccion = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setNumeroDireccion(formatNumeric(ev.target.value));
-  const displayNumeroDireccion: () => string = () => numeroDireccion;
+  const [addressNumber, setAddressNumber] = useState("")
+  const writingAddressNumber = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setAddressNumber(formatNumeric(ev.target.value));
+  const displayAddressNumber: () => string = () => addressNumber;
 
-  const [numeroDepartamento, setNumeroDepartamento] = useState("")
-  const writingNumeroDepartamento = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setNumeroDepartamento(formatNumeric(ev.target.value));
-  const displayNumeroDepartamento: () => string = () => numeroDepartamento;
+  const [apartmentNumber, setApartmentNumber] = useState("")
+  const writingApartmentNumber = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setApartmentNumber(formatNumeric(ev.target.value));
+  const displayApartmentNumber: () => string = () => apartmentNumber;
 
-  const [ciudad, setCiudad] = useState("")
-  const writingCiudad = (ev: React.ChangeEvent<HTMLInputElement>) =>
-    setCiudad(formatAlphanumeric(ev.target.value));
-  const displayCiudad: () => string = () => decorateName(ciudad);
+  const [city, setCity] = useState("")
+  const writingCity = (ev: React.ChangeEvent<HTMLInputElement>) =>
+    setCity(formatAlphanumeric(ev.target.value));
+  const displayCity: () => string = () => decorateName(city);
 
-  const thereAreErrorMessages = () => (rutErrorMessage !== "" || nombreErrorMessage !== "" || emailErrorMessage !== "" || segundoEmailErrorMessage !== "");
+  const thereAreErrorMessages = () => (rutErrorMessage !== "" || nameErrorMessage !== "" || emailErrorMessage !== "" || secondEmailErrorMessage !== "");
 
 
   const postCliente = async () => {
@@ -124,8 +124,8 @@ export const NuevoCliente = () => {
         errorTriggered = errorTriggered || newRutErrorMessage !== ""
       };
 
-    if (!nombre || nombre === "") {
-      setNombreErrorMessage("Nombre es obligatorio")
+    if (!name || name === "") {
+      setNameErrorMessage("Name es obligatorio")
       errorTriggered = true
     }
 
@@ -135,60 +135,66 @@ export const NuevoCliente = () => {
       errorTriggered = errorTriggered || newEmailErrorMessage !== ""
     }
 
-    if (segundoEmail && segundoEmail.length > 0) {
-      const newSegundoEmailErrorMessage = checkEmail(segundoEmail)
-      setSegundoEmailErrorMessage(newSegundoEmailErrorMessage)
-      errorTriggered = errorTriggered || newSegundoEmailErrorMessage !== ""
+    if (secondEmail && secondEmail.length > 0) {
+      const newSecondEmailErrorMessage = checkEmail(secondEmail)
+      setSecondEmailErrorMessage(newSecondEmailErrorMessage)
+      errorTriggered = errorTriggered || newSecondEmailErrorMessage !== ""
     }
 
     if (thereAreErrorMessages() || errorTriggered) return;
 
     const newRut = rut.slice(0, (rut.length - 1))
-    const newNombre = nombre.trimEnd()
-    const newOtrosNombres = otrosNombres.trimEnd()
-    const newApellido = apellido.trimEnd()
-    const newSegundoApellido = segundoApellido.trimEnd()
-    const newTelefonoMovil = telefonoMovil.trimEnd()
-    const newTelefonoFijo = telefonoFijo.trimEnd()
+    const newName = name.trimEnd()
+    const newMiddleNames = middleNames.trimEnd()
+    const newPaternalLastName = paternalLastName.trimEnd()
+    const newMaternalLastName = maternalLastName.trimEnd()
+    const newMobilePhone = mobilePhone.trimEnd()
+    const newLandlinePhone = landlinePhone.trimEnd()
     const newEmail = email.trimEnd()
-    const newSegundoEmail = segundoEmail.trimEnd()
-    const newCalle = calle.trimEnd()
-    const newNumeroDireccion = numeroDireccion.trimEnd()
-    const newNumeroDepartamento = parseInt(numeroDepartamento)
-    const newCiudad = ciudad.trimEnd()
-
-
+    const newSecondEmail = secondEmail.trimEnd()
+    const newStreet = street.trimEnd()
+    const newAddressNumber = addressNumber.trimEnd()
+    const newApartmentNumber = apartmentNumber.trimEnd()
+    const newCity = city.trimEnd()
 
     console.log("newRut: " + newRut)
-    console.log("newNombre: " + newNombre)
-    console.log("newOtrosNombres: " + newOtrosNombres)
-    console.log("newApellido: " + newApellido)
-    console.log("newSegundoApellido: " + newSegundoApellido)
-    console.log("newTelefonoMovil: " + newTelefonoMovil)
-    console.log("newTelefonoFijo: " + newTelefonoFijo)
+    console.log("newName: " + newName)
+    console.log("newMiddleNames: " + newMiddleNames)
+    console.log("newPaternalLastName: " + newPaternalLastName)
+    console.log("newMaternalLastName: " + newMaternalLastName)
+    console.log("newMobilePhone: " + newMobilePhone)
+    console.log("newLandlinePhone: " + newLandlinePhone)
     console.log("newEmail: " + newEmail)
-    console.log("newSegundoEmail: " + newSegundoEmail)
-    console.log("newCalle: " + newCalle)
-    console.log("newNumeroDireccion: " + newNumeroDireccion)
-    console.log("newNumeroDepartamento: " + newNumeroDepartamento)
-    console.log("newCiudad: " + newCiudad)
+    console.log("newSecondEmail: " + newSecondEmail)
+    console.log("newStreet: " + newStreet)
+    console.log("newAddressNumber: " + newAddressNumber)
+    console.log("newApartmentNumber: " + newApartmentNumber)
+    console.log("newCity: " + newCity)
 
-    const newPersona = {
+    const newPerson = {
       rut: newRut,
-      nombre: newNombre,
-      otrosnombres: newOtrosNombres,
-      segundoapellido: newSegundoApellido,
-      telefonomovil: newTelefonoMovil,
-      telefonofijo: newTelefonoFijo,
-      email: newEmail,
-      segundoemail: newSegundoEmail,
-      calle: newCalle,
-      numerodireccion: newNumeroDireccion,
-      newNumeroDepartamento,
-      newCiudad,
+      name: newName,
+      middleNames: newMiddleNames,
+      paternalLastName: newPaternalLastName,
+      maternalLastName: newMaternalLastName,
+      phoneNumbers: [
+        { mobilePhone: newMobilePhone, },
+        { landlinePhone: newLandlinePhone, }
+      ],
+      emails: [
+        { email: newEmail },
+        { secondEmail: newSecondEmail }
+      ],
+      address: {
+        street: newStreet,
+        addressNumber: newAddressNumber,
+        apartmentNumber: newApartmentNumber,
+        city: newCity,
+      }
     }
 
-    const response = await fetch("http://localhost:5000/persona", {
+    // const response =
+    await fetch("http://localhost:5000/persona", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -199,8 +205,9 @@ export const NuevoCliente = () => {
       },
       redirect: "follow", // manual, *follow, error
       referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(newPersona), // body data type must match "Content-Type" header
+      body: JSON.stringify(newPerson), // body data type must match "Content-Type" header
     });
+
   }
 
   return (
@@ -237,16 +244,16 @@ export const NuevoCliente = () => {
               <Box sx={{ pr: 2 }}>
                 <TextField id="outlined-basic"
                   label="Nombre"
-                  value={displayNombre()}
-                  onChange={writingNombre}
-                  error={nombreErrorMessage !== ""}
-                  helperText={nombreErrorMessage}
+                  value={displayName()}
+                  onChange={writingName}
+                  error={nameErrorMessage !== ""}
+                  helperText={nameErrorMessage}
                   variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PersonIcon color={nombreErrorMessage === "" ? "primary" : "error"} />
+                        <PersonIcon color={nameErrorMessage === "" ? "primary" : "error"} />
                       </InputAdornment>
                     ),
                   }}
@@ -257,8 +264,8 @@ export const NuevoCliente = () => {
               <Box sx={{ pr: 2 }}>
                 <TextField id="outlined-basic"
                   label="Otros Nombres (opcional)"
-                  value={displayOtrosNombres()}
-                  onChange={writingOtrosNombres}
+                  value={displayMiddleNames()}
+                  onChange={writingMiddleNames}
                   color="secondary"
                   variant="outlined"
                   fullWidth sx={{ ...textFieldStyle }}
@@ -275,9 +282,9 @@ export const NuevoCliente = () => {
             <Grid item xs={3}>
               <Box sx={{ pl: 2 }}>
                 <TextField id="outlined-basic"
-                  label="Apellido 1 (opcional)"
-                  value={displayApellido()}
-                  onChange={writingApellido}
+                  label="Apellido (opcional)"
+                  value={displayPaternalLastName()}
+                  onChange={writingPaternalLastName}
                   variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
@@ -294,9 +301,9 @@ export const NuevoCliente = () => {
               <Box sx={{ pl: 2 }}>
                 <TextField
                   id="outlined-basic"
-                  label="Apellido 2 (opcional)"
-                  value={displaySegundoApellido()}
-                  onChange={writingSegundoApellido}
+                  label="Segundo Apellido (opcional)"
+                  value={displayMaternalLastName()}
+                  onChange={writingMaternalLastName}
                   color="secondary"
                   variant="outlined"
                   sx={{ ...textFieldStyle }}
@@ -314,8 +321,8 @@ export const NuevoCliente = () => {
               <Box sx={{ pr: 2 }}>
                 <TextField id="outlined-basic"
                   label="Telefono Movil (opcional)"
-                  value={displayTelefonoMovil()}
-                  onChange={writingTelefonoMovil}
+                  value={displayMobilePhone()}
+                  onChange={writingMobilePhone}
                   color="secondary" variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
@@ -332,8 +339,8 @@ export const NuevoCliente = () => {
               <Box sx={{ pl: 2 }}>
                 <TextField id="outlined-basic"
                   label="Telefono Fijo (opcional)"
-                  value={displayTelefonoFijo()}
-                  onChange={writingTelefonoFijo}
+                  value={displayLandlinePhone()}
+                  onChange={writingLandlinePhone}
                   color="secondary" variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
@@ -371,17 +378,17 @@ export const NuevoCliente = () => {
               <Box sx={{ pl: 2 }}>
                 <TextField id="outlined-basic"
                   label="Email 2 (opcional)"
-                  value={displaySegundoEmail()}
-                  onChange={writingSegundoEmail}
-                  error={segundoEmailErrorMessage !== ""}
-                  helperText={segundoEmailErrorMessage}
+                  value={displaySecondEmail()}
+                  onChange={writingSecondEmail}
+                  error={secondEmailErrorMessage !== ""}
+                  helperText={secondEmailErrorMessage}
                   color="secondary"
                   variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <MailOutlineIcon color={segundoEmailErrorMessage === "" ? "secondary" : "error"} />
+                        <MailOutlineIcon color={secondEmailErrorMessage === "" ? "secondary" : "error"} />
                       </InputAdornment>
                     ),
                   }}
@@ -392,8 +399,8 @@ export const NuevoCliente = () => {
               <Box sx={{ pr: 2 }}>
                 <TextField id="outlined-basic"
                   label="Direccion: Calle (opcional)"
-                  value={displayCalle()}
-                  onChange={writingCalle}
+                  value={displayStreet()}
+                  onChange={writingStreet}
                   variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
@@ -410,8 +417,8 @@ export const NuevoCliente = () => {
               <Box sx={{ pr: 2 }}>
                 <TextField id="outlined-basic"
                   label="Direccion: Numero (opcional)"
-                  value={displayNumeroDireccion()}
-                  onChange={writingNumeroDireccion}
+                  value={displayAddressNumber()}
+                  onChange={writingAddressNumber}
                   color="secondary"
                   variant="outlined"
                   fullWidth sx={{ ...textFieldStyle }}
@@ -429,8 +436,8 @@ export const NuevoCliente = () => {
               <Box sx={{ pl: 2 }}>
                 <TextField id="outlined-basic"
                   label="Direccion: Departamento (opcional)"
-                  value={displayNumeroDepartamento()}
-                  onChange={writingNumeroDepartamento}
+                  value={displayApartmentNumber()}
+                  onChange={writingApartmentNumber}
                   variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
@@ -447,8 +454,8 @@ export const NuevoCliente = () => {
               <Box sx={{ pl: 2 }}>
                 <TextField id="outlined-basic"
                   label="Direccion: Ciudad (opcional)"
-                  value={displayCiudad()}
-                  onChange={writingCiudad}
+                  value={displayCity()}
+                  onChange={writingCity}
                   variant="outlined"
                   sx={{ ...textFieldStyle }}
                   InputProps={{
