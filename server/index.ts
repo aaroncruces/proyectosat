@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client"
 //import * as express from "express";
 import express from "express";
 import { json as express_json } from "express";
-import { persona_route } from "./routes/persona";
+import { persona_route } from "./routes/person";
 import cors from "cors";
 
 
