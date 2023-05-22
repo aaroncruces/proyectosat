@@ -48,9 +48,15 @@ enum PhoneType {
 }
 
 model Email {
-  id       Int     @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   //should i add areacode?
-  email    String
-  Person   Person? @relation(fields: [personId], references: [id], onDelete: Cascade)
-  personId Int?
+  email     String
+  Person    Person?   @relation(fields: [personId], references: [id], onDelete: Cascade)
+  personId  Int?
+  emailType EmailType @default(SECONDARY)
+}
+
+enum EmailType {
+  PRIMARY
+  SECONDARY
 }

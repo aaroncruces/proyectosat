@@ -10,7 +10,7 @@ type NavbarProps = {
 export const Navbar = ({ currentPage }: NavbarProps) => {
   return (
     <>
-      <Box sx={{ flexGrow: 1, paddingBottom: "50px" }}>
+      <Box sx={{ flexGrow: 1, paddingBottom: "0px" }}>
         <AppBar position="static">
           <Toolbar>
             <IconButton

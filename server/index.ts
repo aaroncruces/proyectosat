@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client"
 //import * as express from "express";
 import express from "express";
 import { json as express_json } from "express";
-import { persona_route } from "./routes/person";
+import { personRoute } from "./routes/person";
 import cors from "cors";
 
 
@@ -10,7 +10,7 @@ import cors from "cors";
 const app = express()
 app.use(cors())
 app.use(express_json())
-app.use(persona_route)
+app.use(personRoute)
 
 app.listen(5000, () => console.log("server running 5000"))
 

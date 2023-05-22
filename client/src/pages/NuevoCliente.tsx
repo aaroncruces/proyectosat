@@ -1,4 +1,4 @@
-import { Box, Button, Grid, InputAdornment, Paper, TextField, Typography } from '@mui/material'
+import { Alert, AlertTitle, Box, Button, Grid, InputAdornment, Paper, TextField, Typography } from '@mui/material'
 import { formBoxStyle, formPaperElevation, formPaperSpacing } from '../components/fomSpacing'
 import { textFieldStyle } from '../components/textFieldStyle'
 import { Navbar } from '../layouts/Navbar'
@@ -19,6 +19,9 @@ import { formatEmail, formatName, decorateName, formatAlphanumeric, formatNumeri
 
 
 export const NuevoCliente = () => {
+
+  const [errorAlert, setErrorAlert] = useState("")
+  const [successAlert, setSuccessAlert] = useState("")
 
   const [rut, setRut] = useState("")
   const [rutErrorMessage, setRutErrorMessage] = useState("")
@@ -109,9 +112,26 @@ export const NuevoCliente = () => {
   const thereAreErrorMessages = () => (rutErrorMessage !== "" || nameErrorMessage !== "" || emailErrorMessage !== "" || secondEmailErrorMessage !== "");
 
 
-  const postCliente = async () => {
+  const clearFields = () => {
+    setRut("")
+    setRutErrorMessage("")
+    setName("")
+    setNameErrorMessage("")
+    setMiddleNames("")
+    setPaternalLastName("")
+    setMaternalLastName("")
+    setLandlinePhone("")
+    setEmail("")
+    setSecondEmail("")
+    setStreet("")
+    setAddressNumber("")
+    setApartmentNumber("")
+    setApartmentNumber("")
+  }
 
-    //hooks are asynchronous
+  const postPerson = async () => {
+
+    //hooks are somehow asynchronous
     let errorTriggered = false
 
     if (!rut || rut === "") {
@@ -125,7 +145,7 @@ export const NuevoCliente = () => {
       };
 
     if (!name || name === "") {
-      setNameErrorMessage("Name es obligatorio")
+      setNameErrorMessage("Nombre es obligatorio")
       errorTriggered = true
     }
 
@@ -157,33 +177,20 @@ export const NuevoCliente = () => {
     const newApartmentNumber = apartmentNumber.trimEnd()
     const newCity = city.trimEnd()
 
-    console.log("newRut: " + newRut)
-    console.log("newName: " + newName)
-    console.log("newMiddleNames: " + newMiddleNames)
-    console.log("newPaternalLastName: " + newPaternalLastName)
-    console.log("newMaternalLastName: " + newMaternalLastName)
-    console.log("newMobilePhone: " + newMobilePhone)
-    console.log("newLandlinePhone: " + newLandlinePhone)
-    console.log("newEmail: " + newEmail)
-    console.log("newSecondEmail: " + newSecondEmail)
-    console.log("newStreet: " + newStreet)
-    console.log("newAddressNumber: " + newAddressNumber)
-    console.log("newApartmentNumber: " + newApartmentNumber)
-    console.log("newCity: " + newCity)
 
     const newPerson = {
-      rut: newRut,
+      rut: parseInt(newRut),
       name: newName,
       middleNames: newMiddleNames,
       paternalLastName: newPaternalLastName,
       maternalLastName: newMaternalLastName,
       phoneNumbers: [
-        { mobilePhone: newMobilePhone, },
-        { landlinePhone: newLandlinePhone, }
+        { number: parseInt(newMobilePhone), phoneType: "MOBILE" },
+        { number: parseInt(newLandlinePhone), phoneType: "LANDLINE" }
       ],
       emails: [
-        { email: newEmail },
-        { secondEmail: newSecondEmail }
+        { email: newEmail, emailType: "PRIMARY" },
+        { email: newSecondEmail, emailType: "SECONDARY" }
       ],
       address: {
         street: newStreet,
@@ -193,8 +200,9 @@ export const NuevoCliente = () => {
       }
     }
 
-    // const response =
-    await fetch("http://localhost:5000/persona", {
+
+
+    const response = await fetch("http://localhost:5000/person", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -208,11 +216,39 @@ export const NuevoCliente = () => {
       body: JSON.stringify(newPerson), // body data type must match "Content-Type" header
     });
 
+    console.log(response)
+
+    if (!response.ok) {
+      if (response.status === 422) {
+        const errorBody = await response.json()
+        setErrorAlert(errorBody["databaseErrorMessage"])
+        setTimeout(() => {
+          setErrorAlert("")
+        }, 5000)
+      } else {
+        setErrorAlert("error desconocido")
+        setTimeout(() => {
+          setErrorAlert("")
+        }, 5000)
+      }
+
+    }
+    else //response.ok
+    {
+      setSuccessAlert("Persona ingresada correctamente")
+      setTimeout(() => {
+        setSuccessAlert("")
+      }, 5000)
+      clearFields()
+    }
   }
 
   return (
     <>
       <Navbar currentPage={pageList.nuevoCliente} />
+      {errorAlert !== "" && <Alert severity="error" variant="filled"><AlertTitle>{errorAlert}</AlertTitle></Alert>}
+      {successAlert !== "" && <Alert severity="success" variant="filled"><AlertTitle>{successAlert}</AlertTitle></Alert>}
+
       <Box sx={formBoxStyle}>
         <Paper
           elevation={formPaperElevation}
@@ -472,7 +508,7 @@ export const NuevoCliente = () => {
               <Button>Atras</Button>
             </Grid>
             <Grid item xs={2}>
-              <Button variant="contained" onClick={postCliente}
+              <Button variant="contained" onClick={postPerson}
                 color={thereAreErrorMessages() ? "error" : "primary"}
                 disabled={thereAreErrorMessages()}
               >Continuar</Button>
